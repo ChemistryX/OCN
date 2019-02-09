@@ -112,8 +112,8 @@ module Api
             respond
         end
 
-        def credit_raindrops
-            if user = model_instance.credit_raindrops(int_param(:raindrops))
+        def credit_coins
+            if user = model_instance.credit_coins(int_param(:coins))
                 respond success: true,
                         user: user.api_document
             else

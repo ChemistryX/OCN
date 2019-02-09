@@ -22,21 +22,21 @@ module ShopHelper
         "20% off! #{sale_days_left} day" + (sale_days_left != 1 ? "s" : "") + " left!"
     end
 
-    def raindrops_for(total)
+    def coins_for(total)
         steps = [5, 10]
         max = steps.max
-        raindrops = []
+        coins = []
         count = 10
 
         while (max * count) < total
             steps.each do |step|
-                raindrops << {:value => step * count, :display => number_with_delimiter(step * count)}
+                coins << {:value => step * count, :display => number_with_delimiter(step * count)}
             end
             count *= max
         end
 
-        raindrops << {:value => total.to_i, :display => number_with_delimiter(total.to_i)}
+        coins << {:value => total.to_i, :display => number_with_delimiter(total.to_i)}
 
-        return raindrops
+        return coins
     end
 end

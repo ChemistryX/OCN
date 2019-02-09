@@ -3,8 +3,8 @@ module Api
         controller_for Death
 
         def after_update(death)
-            if death.raindrops && death.raindrops != 0 and user = death.killer_obj
-                user.credit_raindrops(death.raindrops)
+            if death.coins && death.coins != 0 and user = death.killer_obj
+                user.credit_coins(death.coins)
             end
         end
     end

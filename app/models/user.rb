@@ -18,6 +18,7 @@ class User
     include Big3Migration
     include Channels
     include Classes
+    include Coins
     include Current
     include Engagements
     include Forums
@@ -36,7 +37,6 @@ class User
     include TokenAuthenticatable
     include Punishments
     include PvpEncounters
-    include Raindrops
     include Tickets
     include Servers
     include Sessions

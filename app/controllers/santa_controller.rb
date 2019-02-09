@@ -25,12 +25,12 @@ class SantaController < ApplicationController
         end
     end
 
-    def raindrops
-        raindrops = int_param(:raindrops, required: true)
+    def coins
+        coins = int_param(:coins, required: true)
         gift = model_param(Gift.giveable.ne(user: current_user_safe), required: true)
 
-        if raindrops > 0 && current_user_safe.debit_raindrops(raindrops)
-            gift.inc(raindrops: raindrops)
+        if coins > 0 && current_user_safe.debit_coins(coins)
+            gift.inc(coins: coins)
         end
 
         redirect_to santa_path + "#" + gift.id

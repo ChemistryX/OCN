@@ -42,7 +42,7 @@ class Death
     field :victim_class, type: String
     field :killer_class, type: String
 
-    attr_accessor :raindrops # not saved
+    attr_accessor :coins # not saved
 
     required = [:match_id, :server_id, :family, :date, :victim_id, :x, :y, :z]
     optional = [
@@ -51,7 +51,7 @@ class Death
         :victim_class, :killer_class
     ]
 
-    attr_accessible :_id, :victim, :killer, :raindrops, *required, *optional
+    attr_accessible :_id, :victim, :killer, :coins, *required, *optional
     validates_presence_of :victim_obj, *required
     api_property *required, *optional
 

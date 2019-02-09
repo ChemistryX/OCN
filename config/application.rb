@@ -96,7 +96,7 @@ module PGM
         config.assets.version = '1.1'
 
         # Time Zone is CST
-        config.time_zone = 'Central Time (US & Canada)'
+        config.time_zone = 'Seoul'
 
         # Include process ID in logs
         config.log_tags = [-> (req) { "PID #{$$}" }]

@@ -5,12 +5,12 @@
         .col-md-8
             %h3 Secret Santa
             %p The goal is to spread the holiday spirit by giving gifts to others. Gift givers might receive a trophy :)
-            %p You can spend raindrops to vote for a gift request. Spending is instant and irreversible. Have fun!
-            - if user_signed_in? && current_user.raindrops > 0
+            %p You can spend coins to vote for a gift request. Spending is instant and irreversible. Have fun!
+            - if user_signed_in? && current_user.coins > 0
                 %p
                     You have a total of
-                    %b= number_with_delimiter(current_user.raindrops.to_i)
-                    raindrops left to give. Get to work!
+                    %b= number_with_delimiter(current_user.coins.to_i)
+                    coins left to give. Get to work!
             %br
         .col-md-4
             .alert.alert-info

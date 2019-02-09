@@ -3,34 +3,34 @@
         %thead
             %tr
                 %th{:width => "100px"}
-                %th{:width => "50px"} Raindrops
+                %th{:width => "50px"} Coins
                 %th User
                 %th{:width => "150px"} Package
                 %th Comment
                 - if user_signed_in?
                     %th{:width => "100px"} Give
         %tbody
-            - raindrops = raindrops_for(current_user.raindrops) if user_signed_in?
+            - coins = coins_for(current_user.coins) if user_signed_in?
             - listing.each do |gift|
                 %tr{:id => gift.id, :title => "Expires in " + time_ago_in_words(gift.expires_at)}
                     %td
-                        %form{:action => santa_raindrops_path, :method => "post"}
+                        %form{:action => santa_coins_path, :method => "post"}
                             = token_tag nil
                             - if user_signed_in?
                                 - if current_user != gift.user && !gift.purchased?
-                                    %select.form-control.input-sm{:name => "raindrops"}
-                                        %option{:disabled => true} Select Raindrops
-                                        - raindrops.each do |entry|
+                                    %select.form-control.input-sm{:name => "coins"}
+                                        %option{:disabled => true} Select Coins
+                                        - coins.each do |entry|
                                             %option{:value => entry[:value]}= entry[:display]
                                     %input{:type => "hidden", :name => "id", :value => gift.id}
                                     %input.btn.btn-primary.btn-xs{:type => "submit",
-                                                                    :value => "Give Raindrops"}
+                                                                    :value => "Give Coins"}
                             - else
                                 %input.btn.btn-primary.btn-xs{:type => "submit",
-                                                                :value => "Give Raindrops",
+                                                                :value => "Give Coins",
                                                                 :rel => "tooltip",
                                                                 :title => "Sign in to vote for this"}
-                    %td= number_with_delimiter(gift.raindrops)
+                    %td= number_with_delimiter(gift.coins)
                     %td
                         = avatar_for(gift.user, 32, link: true)
                         %br

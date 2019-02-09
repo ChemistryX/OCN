@@ -16,7 +16,7 @@ Rails.configuration.tap do |config|
 
         # Minimum bungees online at any given time
         datacenters: {
-            'DC' => { minimum_bungees: 1 }
+            'KR' => { minimum_bungees: 0 }
         }
     }
 end

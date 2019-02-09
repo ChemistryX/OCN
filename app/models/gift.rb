@@ -25,9 +25,9 @@ class Gift
     belongs_to :given_by, class_name: 'User', validates: {reference: true, real_user: true, allow_nil: true}
 
     field :comment, type: String, validates: {presence: true, length: {maximum: 140}}
-    field :raindrops, type: Integer, default: 0, validates: {numericality: true}
+    field :coins, type: Integer, default: 0, validates: {numericality: true}
 
-    attr_accessible :package, :comment, :raindrops
+    attr_accessible :package, :comment, :coins
 
     validates_each :given_by do |gift, attr, value|
         gift.user == value and gift.errors.add(attr, "cannot also be the receiver of the gift")
@@ -44,9 +44,9 @@ class Gift
     scope :this_season, -> (now = Time.now) { gt(created_at: now - SEASON_LENGTH) }
     scope :giveable, -> { purchased(false).not_expired }
 
-    index(INDEX_wishful_elves = {given_by: 1, created_at: 1, raindrops: 1})
+    index(INDEX_wishful_elves = {given_by: 1, created_at: 1, coins: 1})
     scope :wishful_elves, -> {
-        giveable.desc(:raindrops).asc(:id).hint(INDEX_wishful_elves)
+        giveable.desc(:coins).asc(:id).hint(INDEX_wishful_elves)
     }
 
     index(INDEX_happy_children = {given_by: 1, updated_at: -1})

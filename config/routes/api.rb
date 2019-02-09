@@ -13,7 +13,7 @@ PGM::Application.routes.draw do
             member do
                 post "logout"
                 post "purchase_gizmo"
-                post "credit_raindrops"
+                post "credit_coins"
                 post "change_setting"
                 post "change_class"
             end

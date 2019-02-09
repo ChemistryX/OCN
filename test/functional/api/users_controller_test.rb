@@ -7,36 +7,36 @@ module Api
         tests UsersController
 
         test "purchase gizmo" do
-            user = create(:user, raindrops: 100)
+            user = create(:user, coins: 100)
             group = create(:gizmo, name: "woot")
 
             post :purchase_gizmo, id: user.player_id, gizmo_name: "woot", price: 25
 
             assert_response :success
             assert user.reload.in_group?(group)
-            assert_equal 75, user.raindrops
+            assert_equal 75, user.coins
         end
 
         test "purchase gizmo fails if already owned" do
-            user = create(:user, raindrops: 100)
+            user = create(:user, coins: 100)
             group = create(:gizmo, name: "woot")
             user.join_group(group)
 
             post :purchase_gizmo, id: user.player_id, gizmo_name: "woot", price: 25
 
             assert_response 403
-            assert_equal 100, user.reload.raindrops
+            assert_equal 100, user.reload.coins
         end
 
         test "purchase gizmo fails if too expensive" do
-            user = create(:user, raindrops: 100)
+            user = create(:user, coins: 100)
             group = create(:gizmo, name: "woot")
 
             post :purchase_gizmo, id: user.player_id, gizmo_name: "woot", price: 101
 
             assert_response 403
             refute user.reload.in_group?(group)
-            assert_equal 100, user.raindrops
+            assert_equal 100, user.coins
         end
 
         test "login" do
