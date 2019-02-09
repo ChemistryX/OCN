@@ -10,8 +10,6 @@ but it may be help in understanding how the [ProjectAres](https://github.com/Ove
 We are quite open to the idea of evolving this into something more generally useful.
 If you would like to contribute to this effort, talk to us in [Discord](https://discord.gg/6zGDEen).
 
-**NOTE**: This repository is no longer maintained, but you can still contribute to [forks](https://github.com/OvercastNetwork/OCN/network).
-
 # License
 
 OCN Website/Backend is free software: you can redistribute it and/or modify it
@@ -71,6 +69,8 @@ This includes things like permission groups, server families, and game types.
 Clone it somewhere, and create a symlink to it from `/minecraft/repo/data`.
 From the Web repo, run `rails c` to start a Rails shell session.
 From the Rails shell, run `Repository[:data].load_models` to import everything from the Data repo into MongoDB.
+
+Still from the Rails shell, run `Map.sync_ratings` to do some setup required by the couch worker.
 
 ## Run the backend app
 
