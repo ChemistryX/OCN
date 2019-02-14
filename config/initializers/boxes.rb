@@ -10,5 +10,4 @@ case Rails.env
                 services [:octc]
             end
         end
-    end
 end
